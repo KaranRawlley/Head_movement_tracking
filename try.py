@@ -43,38 +43,3 @@ def run():
     cv2.destroyAllWindows()
 run()
 
-def get_motion(faceCenter, originCenter):
-	#[0][0] - x, [0][1] - y, [0][2] - w, [0][3] - h
-	horizontal_change = faceCenter[0] - originCenter[0]
-	vertical_change = faceCenter[1] - originCenter[1]
-
-	ver = vertical_change < DISTURBANCE_TOLERANCE_UP and vertical_change > DISTURBANCE_TOLERANCE_DOWN
-	if abs(horizontal_change) < DISTURBANCE_TOLERANCE_HORI and ver:
-		print('ORIGIN', horizontal_change, vertical_change)
-		return 25, 0
-	if vertical_change >= 0:
-		if abs(horizontal_change) > (DISTURBANCE_TOLERANCE_HORI/abs(DISTURBANCE_TOLERANCE_DOWN))*abs(vertical_change):
-			if horizontal_change > 0:
-				print('LEFT', horizontal_change, vertical_change)
-				return 1, horizontal_change
-			else:
-				print('RIGHT', horizontal_change, vertical_change)
-				return 0, -horizontal_change
-		else:
-			print('DOWN', horizontal_change, vertical_change)
-			return 2, vertical_change
-
-	if vertical_change < 0:
-		if abs(horizontal_change) > (DISTURBANCE_TOLERANCE_HORI/abs(DISTURBANCE_TOLERANCE_UP))*abs(vertical_change):
-			if horizontal_change > 0:
-				print('LEFT', horizontal_change, vertical_change)
-				return 1, horizontal_change
-			else:
-				print('RIGHT', horizontal_change, vertical_change)
-				return 0, -horizontal_change
-		else:
-			print('UP', horizontal_change, vertical_change)
-			return 3, vertical_change
-	print(horizontal_change, vertical_change)
-
-
