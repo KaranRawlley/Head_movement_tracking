@@ -43,4 +43,7 @@ def run():
     cv2.destroyAllWindows()
 run()
 
+# <<<<<<< HEAD
 
+# =======
+# >>>>>>> dc11f117d97a5ea19b4ab71beb613881784f6eba
