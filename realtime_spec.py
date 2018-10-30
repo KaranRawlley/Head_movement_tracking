@@ -33,7 +33,7 @@ while True:
         
         if(A<40):
              cv2.putText(frame, "Right", (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-        elif (A>70):
+        elif (A>65):
              cv2.putText(frame, "Left", (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
         
     cv2.imshow('Video', frame)
